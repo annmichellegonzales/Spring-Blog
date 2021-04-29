@@ -10,7 +10,7 @@ public class PostController {
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
     @ResponseBody
     public String post(String post) {
-        return post;
+        return "Posts: " + post;
     }
 
     @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)

@@ -14,13 +14,6 @@ public class HelloController {
 
     }
 
-//    @GetMapping("/hello/{name}")
-//    @ResponseBody
-//    public String sayHello(@PathVariable String name) {
-//        return "Hello " + name + "!";
-//    }
-
-
     @GetMapping("/hello/{name}")
     public String sayHello(@PathVariable String name, Model model) {
         model.addAttribute("name", name);
