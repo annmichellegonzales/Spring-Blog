@@ -1,33 +1,41 @@
 package com.codeup.SpringBlog.controllers;
 
-
+import com.codeup.SpringBlog.Post;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class PostController {
 
-    @RequestMapping(value = "/posts", method = RequestMethod.GET)
-    @ResponseBody
-    public String post(String post) {
-        return "Posts: " + post;
+    List<Post> posts = new ArrayList<>();
+
+    public PostController() {
+        posts.add(new Post("Elric", "My son-heart."));
+        posts.add(new Post("Happiness", "Contentment and being."));
     }
 
-    @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public String postId(String id) {
-        return id;
+    @GetMapping("/posts")
+    public String postsIndex(Model model) {
+        model.addAttribute("posts", posts);
+        return "posts/index";
     }
-//
-    @RequestMapping(value = "/posts/create", method = RequestMethod.GET)
-    @ResponseBody
-    public String viewPost(String post) {
-        return post;
+
+    @GetMapping("/posts/{id}")
+    public String postView(@PathVariable long id, Model model) {
+        Post post = new Post("Testing", "test post");
+        return "posts/index";
     }
 
     @PostMapping(value = "/posts/create")
     @ResponseBody
-    public String createPost(String post) {
-        return post;
+    public String createPost() {
+        return "create";
     }
 }
