@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head">
-    <meta charset="UTF-8" />
-    <title>Home</title>
+    <meta charset="UTF-8"/>
+    <title th:text="${'AMG >^.^< '}"></title>
     <!-- include stylesheets, etc here -->
 </head>
 <body>
@@ -14,5 +14,10 @@
         <li>link 2</li>
     </ul>
 </nav>
+<th:block th:fragment="footer">
+    <footer>
+        A. M. G. Spring Blog @ 2021
+    </footer>
+</th:block>
 </body>
 </html>

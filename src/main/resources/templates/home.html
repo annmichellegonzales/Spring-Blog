@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Home</title>
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <title th:text="${'AMG >^.^< '}"></title>
 </head>
 <body>
+<nav th:fragment="navbar">
+    <!-- awesome navbar goes here -->
+    <h3>Navigation</h3>
+    <ul>
+        <li>link 1</li>
+        <li>link 2</li>
+    </ul>
+</nav>
 
-<h1>This is the home page</h1>
+<h1>E.T. phone HOME PAGE</h1>
 
+<th:block th:fragment="footer">
+    <footer>
+        A. M. G. Spring Blog @ 2021
+    </footer>
+</th:block>
 </body>
 </html>
