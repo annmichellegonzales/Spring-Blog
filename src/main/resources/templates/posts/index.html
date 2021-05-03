@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/header :: head('Spring blog - Home page')"></head>
-<body>
+<head>
+    <meta charset="UTF-8">
+    <title>&dagger; Index &dagger;</title>
+    <th:block th:replace="partials/styles :: styles" />
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
 <nav th:replace="partials/navbar :: navbar" />
-<h1>Blog Posts</h1>
-<div th:each="post : ${posts}">
-    <p th:text="${post.title}"/>
+<header th:replace="partials/header :: header('&dagger; Posts &dagger;')"></header>
+
+
+<main>
+
+<div class="card" style="font-family: 'Roboto', sans-serif; font-size: 18px; background-color: #BDE0FE" th:each="post : ${posts}">
+    <h3 th:text="${post.title}"/>
     <p th:text="${post.body}"/>
 </div>
-<footer th:replace="partials/footer :: footer"/>
+
+</main>
+
+<footer th:replace="partials/footer :: footer"></footer>
+<th:block th:replace="partials/scripts :: scripts" />
 </body>
 </html>

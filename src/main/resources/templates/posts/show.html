@@ -1,13 +1,22 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head th:replace="partials/header :: head('Spring blog - Home page')"></head>-->
-<!--<body>-->
-<!--<nav th:replace="partials/navbar :: navbar" />-->
-<!--<h1>Blog Posts</h1>-->
-<!--<div th:each="post : ${posts}">-->
-<!--    <p th:text="${post.title}"/>-->
-<!--    <p th:text="${post.body}"/>-->
-<!--</div>-->
-<!--<footer th:replace="partials/footer :: footer"/>-->
-<!--</body>-->
-<!--</html>-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>&dagger; Post &dagger;</title>
+    <th:block th:replace="partials/styles :: styles" />
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<nav th:replace="partials/navbar :: navbar" />
+<header th:replace="partials/header :: header('&dagger; Post &dagger;')"></header>
+
+<div style="font-family: 'Roboto'"
+    <h3 th:text="${post.title}"/>
+    <p th:text="${post.body}"/>
+</div>
+
+<footer th:replace="partials/footer :: footer"/>
+<th:block th:replace="partials/scripts :: scripts" />
+</body>
+</html>

@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
 <body>
-<nav th:fragment="navbar">
-    <!-- awesome navbar goes here -->
-    <h3>Navigation</h3>
-    <ul>
-        <li>link 1</li>
-        <li>link 2</li>
-    </ul>
+
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark text-light">
+    <div class="container">
+        <a class="navbar-brand display-4" style="font-size: 48px; color: #A2D2FF" href="#"><i class="fab fa-microblog"></i></a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/about">About</a>
+                <a class="nav-link" href="/posts">Posts</a>
+            </div>
+        </div>
+    </div>
 </nav>
+
 </body>
 </html>

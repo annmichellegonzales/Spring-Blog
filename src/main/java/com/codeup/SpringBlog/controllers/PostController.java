@@ -9,33 +9,42 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
 public class PostController {
 
-    List<Post> posts = new ArrayList<>();
-
-    public PostController() {
-        posts.add(new Post("Elric", "My son-heart."));
-        posts.add(new Post("Happiness", "Contentment and being."));
-    }
-
     @GetMapping("/posts")
-    public String postsIndex(Model model) {
-        model.addAttribute("posts", posts);
+
+    public String index(Model vModel) {
+        List<Post> posts = new ArrayList<>(Arrays.asList(
+                new Post("Elric", "My son"),
+                new Post("Brooklyn", "House panther"),
+                new Post("Gratitude", "Contentment")
+        ));
+        vModel.addAttribute("posts", posts);
         return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
-    public String postView(@PathVariable long id, Model model) {
-        Post post = new Post("Testing", "test post");
-        return "posts/index";
+    public String show(@PathVariable long id, Model vModel) {
+        Post post = new Post("Test Title", "Test Body");
+        vModel.addAttribute("id", id);
+        vModel.addAttribute("post", post);
+        return "posts/show";
     }
 
-    @PostMapping(value = "/posts/create")
+    @GetMapping("/posts/create")
     @ResponseBody
-    public String createPost() {
-        return "create";
+    public String create() {
+        return "Here is a view to create a new post...";
     }
+
+    @PostMapping("/posts/create")
+    @ResponseBody
+    public String insert() {
+        return "Saving a new post...";
+    }
+
 }

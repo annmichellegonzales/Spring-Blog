@@ -2,5 +2,10 @@
 <head th:replace="partials :: head" />
 <body>
 <nav th:replace="partials :: navbar" />
-<h1>Welcome To My Site!</h1>
+
+<header th:replace="partials/header :: header('&dagger; Welcome &dagger;')"></header>
+<footer th:replace="partials/footer :: footer"></footer>
+
+<th:block th:replace="partials/scripts :: scripts" />
+
 </body>
