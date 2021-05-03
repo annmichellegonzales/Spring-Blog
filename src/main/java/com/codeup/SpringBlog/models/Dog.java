@@ -7,36 +7,35 @@ public class Dog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, length = 11)
     private long id;
 
-    @Column(nullable = false)
-    private long age;
+    @Column(name="age", columnDefinition = "tinyint(3)", nullable = false)
+    private short age;
 
-    @Column(nullable = false)
+    @Column(name="name", nullable = false, length = 200)
     private String name;
 
-    @Column(nullable = false)
+    @Column(name="reside_state", length=2, unique=true, columnDefinition = "XX")
     private String resideState;
 
+    public Dog() {
 
-    public Dog(long id, long age, String name, String resideState) {
+    }
+
+    public Dog(long id, short age, String name, String resideState) {
         this.id = id;
         this.age = age;
         this.name = name;
         this.resideState = resideState;
     }
 
-    public Dog() {
-
-    }
-
-
     public long getId() {
         return id;
     }
 
 
-    public long getAge() {
+    public short getAge() {
         return age;
     }
 
@@ -52,7 +51,7 @@ public class Dog {
         this.id = id;
     }
 
-    public void setAge(long age) {
+    public void setAge(short age) {
         this.age = age;
     }
 
@@ -62,10 +61,6 @@ public class Dog {
 
     public void setResideState(String resideState) {
         this.resideState = resideState;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
 }
