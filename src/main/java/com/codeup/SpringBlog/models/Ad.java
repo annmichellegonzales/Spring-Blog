@@ -3,7 +3,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ads")
-public class Ads {
+public class Ad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +15,7 @@ public class Ads {
     @Column(unique = true, columnDefinition = "TEXT")
     private String description;
 
+    @Column(nullable = false)
     private int priceInCents;
 
 }
