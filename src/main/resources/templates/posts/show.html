@@ -9,11 +9,12 @@
 <body class="d-flex flex-column min-vh-100">
 
 <nav th:replace="partials/navbar :: navbar" />
-<header th:replace="partials/header :: header('&dagger; Post &dagger;')"></header>
+<header th:replace="partials/header :: header('&#9904 Post &#9904')"></header>
 
 <div style="font-family: 'Roboto'">
     <h3 th:text="${post.title}"/>
     <p th:text="${post.body}"/>
+<!--    <p th:text="${post.}"/>-->
 </div>
 
 <footer th:replace="partials/footer :: footer"/>

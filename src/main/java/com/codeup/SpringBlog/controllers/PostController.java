@@ -1,6 +1,8 @@
 package com.codeup.SpringBlog.controllers;
 
 import com.codeup.SpringBlog.models.Post;
+import com.codeup.SpringBlog.models.User;
+import com.codeup.SpringBlog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,12 @@ import java.util.List;
 
 @Controller
 public class PostController {
+
+    private final UserRepository usersDao;
+
+    public PostController(UserRepository usersDao) {
+        this.usersDao = usersDao;
+    }
 
     @GetMapping("/posts")
 
@@ -36,9 +44,21 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
-    public String create() {
-        return "Here is a view to create a new post...";
+    public String createPost() {
+        User user = new User(
+                1,
+                "user@mail.com",
+                "password",
+                1,
+                "user"
+        );
+        Post post = new Post(
+                1,
+                "Elric",
+                "My son-heart.",
+                user
+        );
+        return "redirect:/posts";
     }
 
     @PostMapping("/posts/create")

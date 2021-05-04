@@ -12,12 +12,14 @@
 <header th:replace="partials/header :: header('&#9904 Posts &#9904')"></header>
 
 
-<main>
+<main class="container">
+    <!--/*@thymesVar id="id" type=""*/-->
+    <form th:action="'/posts/' + ${id} + '/edit'" th:method="POST">
+        <label for="title">Title</label>
 
-<div class="card" style="font-family: 'Roboto', sans-serif; font-size: 18px; background-color: #BDE0FE" th:each="post : ${posts}">
-    <h3 th:text="${post.title}"/>
-    <p th:text="${post.body}"/>
-</div>
+    </form>
+
+
 
 </main>
 
