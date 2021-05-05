@@ -8,13 +8,24 @@ public class PostDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private boolean isAwesome;
     private String historyOfPost;
     private String topicDescription;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Post post;
+
+    public PostDetails(Long id, boolean isAwesome, String historyOfPost, String topicDescription, Post post) {
+        this.id = id;
+        this.isAwesome = isAwesome;
+        this.historyOfPost = historyOfPost;
+        this.topicDescription = topicDescription;
+        this.post = post;
+    }
+
+    public PostDetails() {
+
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -24,4 +35,37 @@ public class PostDetails {
     public Long getId() {
         return id;
     }
+
+    public boolean isAwesome() {
+        return isAwesome;
+    }
+
+    public void setAwesome(boolean awesome) {
+        isAwesome = awesome;
+    }
+
+    public String getHistoryOfPost() {
+        return historyOfPost;
+    }
+
+    public void setHistoryOfPost(String historyOfPost) {
+        this.historyOfPost = historyOfPost;
+    }
+
+    public String getTopicDescription() {
+        return topicDescription;
+    }
+
+    public void setTopicDescription(String topicDescription) {
+        this.topicDescription = topicDescription;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
 }
