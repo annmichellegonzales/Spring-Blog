@@ -2,16 +2,32 @@
 <html xmlns:th="http://wwww.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>&dagger; Home &ddagger;</title>
+    <title>&dagger; Home &dagger;</title>
     <th:block th:replace="partials/styles :: styles" />
 </head>
 <body class="d-flex flex-column min-vh-100">
 
 <nav th:replace="partials/navbar :: navbar"/>
-<header th:replace="partials/header :: header('&#9904; Home &#9904;')"></header>
+
+<div class="container">
+    <div class="row">
+        <div class="col mt-5">
+            <header th:replace="partials/header :: header('&#9904; Welcome &#9904;')"></header>
+        </div>
+        <div class="col mt-5">
+            <img src="/img/unicorn.png" alt="pastel unicorn" style="width:500px;display: block;margin-left: auto;margin-right: auto;">
+        </div>
+    </div>
+</div>
 
 
-<img src="/img/unicorn.png" alt="pastel unicorn" style="width:500px;height:600px;display: block;margin-left: auto;margin-right: auto; ">
+
+
+
+<!--<header th:replace="partials/header :: header('&#9904; Home &#9904;')"></header>-->
+
+
+<!--<img src="/img/unicorn.png" alt="pastel unicorn" style="width:500px;height:600px;display: block;margin-left: auto;margin-right: auto;">-->
 
 <footer th:replace="partials/footer :: footer"></footer>
 
