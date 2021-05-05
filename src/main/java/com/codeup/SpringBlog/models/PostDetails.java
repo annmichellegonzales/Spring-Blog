@@ -8,8 +8,11 @@ public class PostDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private boolean isAwesome;
+    @Column(nullable = false)
     private String historyOfPost;
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String topicDescription;
 
     @OneToOne(cascade = CascadeType.ALL)
