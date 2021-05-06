@@ -1,9 +1,8 @@
 package com.codeup.SpringBlog.controllers;
 
 import com.codeup.SpringBlog.models.Post;
-import com.codeup.SpringBlog.models.User;
+import com.codeup.SpringBlog.models.PostDetails;
 import com.codeup.SpringBlog.repositories.PostRepository;
-import com.codeup.SpringBlog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +37,8 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String show(@PathVariable long id, Model vModel) {
-        Post post = new Post("Test Title", "Test Body");
+//        Post post = new Post("Test Title", "Test Body");
+        Post post = postDao.getOne(id);
         vModel.addAttribute("id", id);
         vModel.addAttribute("post", post);
         return "posts/show";
@@ -46,19 +46,13 @@ public class PostController {
 
     @GetMapping("/posts/create")
     public String createPost() {
-        User user = new User(
-                1,
-                "user@mail.com",
-                "password",
-                1,
-                "user"
-        );
         Post post = new Post(
-                1,
                 "Elric",
                 "My son-heart.",
-                user
+                new PostDetails(true, "asdf", "asdf")
+
         );
+        postDao.save(post);
         return "redirect:/posts";
     }
 

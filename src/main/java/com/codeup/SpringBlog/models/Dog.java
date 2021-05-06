@@ -7,16 +7,16 @@ public class Dog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, length = 11)
+    @Column(nullable = false, length = 11)
     private long id;
 
-    @Column(name="age", columnDefinition = "tinyint(3)", nullable = false)
+    @Column(columnDefinition = "tinyint(3)", nullable = false)
     private short age;
 
-    @Column(name="name", nullable = false, length = 200)
+    @Column(nullable = false, length = 200)
     private String name;
 
-    @Column(name="reside_state", length=2, unique=true, columnDefinition = "XX")
+    @Column(length=2, unique=true)
     private String resideState;
 
     public Dog() {

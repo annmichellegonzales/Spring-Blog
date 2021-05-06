@@ -14,15 +14,19 @@ public class PostDetails {
     private String historyOfPost;
     @Column(nullable = false, columnDefinition = "TEXT")
     private String topicDescription;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Post post;
+
 
     public PostDetails(Long id, boolean isAwesome, String historyOfPost, String topicDescription, Post post) {
         this.id = id;
         this.isAwesome = isAwesome;
         this.historyOfPost = historyOfPost;
         this.topicDescription = topicDescription;
-        this.post = post;
+    }
+
+    public PostDetails(boolean isAwesome, String historyOfPost, String topicDescription) {
+        this.isAwesome = isAwesome;
+        this.historyOfPost = historyOfPost;
+        this.topicDescription = topicDescription;
     }
 
     public PostDetails() {
@@ -60,14 +64,6 @@ public class PostDetails {
 
     public void setTopicDescription(String topicDescription) {
         this.topicDescription = topicDescription;
-    }
-
-    public Post getPost() {
-        return post;
-    }
-
-    public void setPost(Post post) {
-        this.post = post;
     }
 
 }

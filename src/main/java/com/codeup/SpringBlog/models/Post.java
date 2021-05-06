@@ -1,4 +1,6 @@
 package com.codeup.SpringBlog.models;
+import org.springframework.cglib.core.ProcessArrayCallback;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,16 +24,22 @@ public class Post {
     public Post(){
     }
 
-    public Post(long id, String title, String body) {
+    public Post(long id, String title, String body, PostDetails postDetails) {
         this.id = id;
         this.title = title;
         this.body = body;
+        this.postDetails = postDetails;
+    }
+
+    public Post(String title, String body, PostDetails postDetails) {
+        this.title = title;
+        this.body = body;
+        this.postDetails = postDetails;
     }
 
     public Post(String title, String body) {
-    }
-
-    public Post(int i, String elric, String s, User user) {
+        this.title = title;
+        this.body = body;
     }
 
     public long getId() {
@@ -56,5 +64,13 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public PostDetails getPostDetails() {
+        return postDetails;
+    }
+
+    public void setPostDetails(PostDetails postDetails) {
+        this.postDetails = postDetails;
     }
 }
