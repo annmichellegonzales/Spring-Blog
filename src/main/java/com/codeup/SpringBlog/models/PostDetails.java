@@ -14,7 +14,6 @@ public class PostDetails {
     private String historyOfPost;
     @Column(nullable = false, columnDefinition = "TEXT")
     private String topicDescription;
-
     @OneToOne(cascade = CascadeType.ALL)
     private Post post;
 

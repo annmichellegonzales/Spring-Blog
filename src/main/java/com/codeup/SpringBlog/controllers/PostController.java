@@ -2,6 +2,7 @@ package com.codeup.SpringBlog.controllers;
 
 import com.codeup.SpringBlog.models.Post;
 import com.codeup.SpringBlog.models.User;
+import com.codeup.SpringBlog.repositories.PostRepository;
 import com.codeup.SpringBlog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +18,10 @@ import java.util.List;
 @Controller
 public class PostController {
 
-    private final UserRepository usersDao;
+    private final PostRepository postDao;
 
-    public PostController(UserRepository usersDao) {
-        this.usersDao = usersDao;
+    public PostController(PostRepository postDao) {
+        this.postDao = postDao;
     }
 
     @GetMapping("/posts")
@@ -65,6 +66,12 @@ public class PostController {
     @ResponseBody
     public String insert() {
         return "Saving a new post...";
+    }
+
+    @PostMapping("/post/{id}/delete")
+    public String deletePost(@PathVariable("id") Long id) {
+        postDao.deleteById(id);
+        return "redirect:/post";
     }
 
 }

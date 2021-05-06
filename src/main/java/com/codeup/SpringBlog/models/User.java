@@ -23,7 +23,12 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+//    @JoinTable(
+//            name="posts",
+//            joinColumns={@JoinColumn(name="post_id")},
+//            inverseJoinColumns={@JoinColumn(name="post_id")}
+//    )
     private List <Post> posts;
 
 
