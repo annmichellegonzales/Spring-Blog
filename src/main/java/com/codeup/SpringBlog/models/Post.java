@@ -6,19 +6,18 @@ import javax.persistence.*;
 public class Post {
 
     @Id
-    @Column(name = "POST_ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "INT UNSIGNED")
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 200)
     private String title;
 
     @Column(columnDefinition = "TEXT NOT NULL")
     private String body;
 
-    @ManyToOne
-    @JoinColumn (name = "user_user_id")
-    private User user;
+    @OneToOne(cascade = CascadeType.ALL)
+    private PostDetails postDetails;
 
     public Post(){
     }
@@ -29,14 +28,10 @@ public class Post {
         this.body = body;
     }
 
-    public Post(long id, String title, String body, User user) {
-        this.id = id;
-        this.title = title;
-        this.body = body;
-        this.user = user;
+    public Post(String title, String body) {
     }
 
-    public Post(String title, String body) {
+    public Post(int i, String elric, String s, User user) {
     }
 
     public long getId() {

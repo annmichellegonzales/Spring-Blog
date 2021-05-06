@@ -38,11 +38,11 @@ public class PostDetails {
         return id;
     }
 
-    public boolean isAwesome() {
+    public boolean getIsAwesome() {
         return isAwesome;
     }
 
-    public void setAwesome(boolean awesome) {
+    public void setIsAwesome(boolean awesome) {
         isAwesome = awesome;
     }
 
