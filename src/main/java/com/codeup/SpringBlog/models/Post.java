@@ -2,10 +2,11 @@ package com.codeup.SpringBlog.models;
 import org.springframework.cglib.core.ProcessArrayCallback;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
-public class Post {
+public class Post<PostImage> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,17 +19,26 @@ public class Post {
     @Column(columnDefinition = "TEXT NOT NULL")
     private String body;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private User user;
+
     @OneToOne(cascade = CascadeType.ALL)
     private PostDetails postDetails;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post", orphanRemoval = true)
+    private List<PostImage> images;
+
+
 
     public Post(){
     }
 
-    public Post(long id, String title, String body, PostDetails postDetails) {
+    public Post(long id, String title, String body, PostDetails postDetails, List<PostImage> images) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.postDetails = postDetails;
+        this.images = images;
     }
 
     public Post(String title, String body, PostDetails postDetails) {
