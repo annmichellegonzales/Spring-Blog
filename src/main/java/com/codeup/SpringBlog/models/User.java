@@ -7,11 +7,11 @@ import java.util.List;
 public class User {
 
     @Id
-    @Column(name = "USER_ID", nullable = false)
+    @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "POST_ID", nullable = false)
+    @Column(nullable = false)
     private long postId;
 
     @Column(nullable = false, unique = true)
@@ -23,8 +23,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user")
-    private List <Post> posts;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    private List <Post> postList;
 
 
     public User(long id, String username, String email, String password) {

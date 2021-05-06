@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Post {
 
     @Id
-    @Column(name = "POST_ID", nullable = false)
+    @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
