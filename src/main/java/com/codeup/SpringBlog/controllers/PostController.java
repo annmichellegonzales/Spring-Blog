@@ -5,6 +5,7 @@ import com.codeup.SpringBlog.models.PostDetails;
 import com.codeup.SpringBlog.models.User;
 import com.codeup.SpringBlog.repositories.PostRepository;
 import com.codeup.SpringBlog.repositories.UserRepository;
+import com.codeup.SpringBlog.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,38 +19,34 @@ public class PostController {
 
     private final PostRepository postDao;
     private final UserRepository userDao;
+    private final EmailService emailService;
 
-    public PostController(PostRepository postDao, UserRepository userDao) {
+    public PostController(PostRepository postDao, UserRepository userDao, EmailService emailService) {
         this.postDao = postDao;
         this.userDao = userDao;
+        this.emailService = emailService;
     }
 
-
-    //    index of all posts
+//  index of all posts
     @GetMapping("/posts")
     public String index(Model vModel) {
-        List<Post> posts = new ArrayList<>(Arrays.asList(
-                new Post("Elric", "My son"),
-                new Post("Brooklyn", "House panther"),
-                new Post("Gratitude", "Contentment")
-        ));
+        List<Post> posts = postDao.findAll();
         vModel.addAttribute("posts", posts);
         return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
     public String show(@PathVariable long id, Model vModel) {
-//        Post post = new Post("Test Title", "Test Body");
         Post post = postDao.getOne(id);
         vModel.addAttribute("id", id);
         vModel.addAttribute("post", post);
         return "posts/show";
     }
 
-
-    @PostMapping("/post/delete/{id}")
-    public String deletePost(@PathVariable long id) {
-        postDao.deleteById(id);
+    @PostMapping("/posts/{id}/delete")
+    public String deletePost(@PathVariable long id, Model model) {
+        Post post = postDao.getOne(id);
+        postDao.delete(post);
         return "redirect:/posts";
     }
 
@@ -60,38 +57,25 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String create(@RequestParam String title, @RequestParam String body) {
-        Post post = new Post();
-//        PostDetails postDetails = new PostDetails();
-        post.setTitle(title);
-        post.setBody(body);
+    public String create(@ModelAttribute Post post) {
 //        postDetails.setHistoryOfPost(postDetails.getHistoryOfPost());
+        emailService.prepareAndSend(post, "title", "body");
         postDao.save(post);
         return "redirect:/posts/" + post.getId();
     }
 
-    @GetMapping("/posts/edit/{id}")
+    @GetMapping("/posts/{id}/edit")
     public String showEditForm(@PathVariable("id") long id, Model vModel) {
         Post post = postDao.getOne(id);
         vModel.addAttribute("post", post);
-        return "post/edit";
+        return "posts/edit";
     }
 
-    @PostMapping("/posts/edit/{id}")
-    public String editedPost(@PathVariable long id, @ModelAttribute Post post) {
+    @PostMapping("/posts/{id}/edit")
+    public String editedPost(@PathVariable("id") long id, @ModelAttribute Post post) {
+        postDao.getOne(id);
         postDao.save(post);
         return "redirect:/posts";
     }
 
-//    @GetMapping("/posts/create")
-//    public String createPost() {
-//        Post post = new Post(
-//                "Elric",
-//                "My son-heart.",
-//                new PostDetails(true, "asdf", "asdf")
-//        );
-//        Post user = userDao.getOne(1L);
-//        postDao.save(post);
-//        return "redirect:/posts";
-//    }
 }

@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"> lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>&dagger; Create Post &dagger;</title>
+    <th:block th:replace="partials/styles :: styles" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
+
+<nav th:replace="partials/navbar :: navbar" />
+<header th:replace="partials/header :: header('&#9904; Create Post &#9904;')"></header>
 
 <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
     Title:
@@ -19,5 +23,7 @@
     <input type="submit" />
 </form>
 
+<footer th:replace="partials/footer :: footer"></footer>
+<th:block th:replace="partials/scripts :: scripts" />
 </body>
 </html>
