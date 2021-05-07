@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "posts")
-public class Post<PostImage> {
+public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,17 +26,16 @@ public class Post<PostImage> {
     private PostDetails postDetails;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post", orphanRemoval = true)
-    private List<PostImage> images;
-
-
+    private List<PostImages> images;
 
     public Post(){
     }
 
-    public Post(long id, String title, String body, PostDetails postDetails, List<PostImage> images) {
+    public Post(long id, String title, String body, User user, PostDetails postDetails, List<PostImage> images) {
         this.id = id;
         this.title = title;
         this.body = body;
+        this.user = user;
         this.postDetails = postDetails;
         this.images = images;
     }
@@ -82,5 +81,21 @@ public class Post<PostImage> {
 
     public void setPostDetails(PostDetails postDetails) {
         this.postDetails = postDetails;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<PostImages> getImages() {
+        return images;
+    }
+
+    public void setImages(List<PostImages> images) {
+        this.images = images;
     }
 }

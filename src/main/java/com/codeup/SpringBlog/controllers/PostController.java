@@ -2,7 +2,9 @@ package com.codeup.SpringBlog.controllers;
 
 import com.codeup.SpringBlog.models.Post;
 import com.codeup.SpringBlog.models.PostDetails;
+import com.codeup.SpringBlog.models.User;
 import com.codeup.SpringBlog.repositories.PostRepository;
+import com.codeup.SpringBlog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +20,16 @@ import java.util.List;
 public class PostController {
 
     private final PostRepository postDao;
+    private final UserRepository userDao;
 
-    public PostController(PostRepository postDao) {
+    public PostController(PostRepository postDao, UserRepository userDao) {
         this.postDao = postDao;
+        this.userDao = userDao;
     }
 
-    @GetMapping("/posts")
 
+//    index of all posts
+    @GetMapping("/posts")
     public String index(Model vModel) {
         List<Post> posts = new ArrayList<>(Arrays.asList(
                 new Post("Elric", "My son"),
@@ -50,8 +55,8 @@ public class PostController {
                 "Elric",
                 "My son-heart.",
                 new PostDetails(true, "asdf", "asdf")
-
         );
+//        User user = userDao.getOne(1L);
         postDao.save(post);
         return "redirect:/posts";
     }
