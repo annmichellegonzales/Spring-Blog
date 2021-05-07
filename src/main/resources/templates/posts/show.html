@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>&coffin; Post &coffin;</title>
+    <title>&dagger; Post &dagger;</title>
     <th:block th:replace="partials/styles :: styles" />
 </head>
 
@@ -14,9 +14,8 @@
 <div style="font-family: 'Roboto'">
     <h3 th:text="${post.title}"/>
     <p th:text="${post.body}"/>
-    <p th:text="${post.postDetails.historyOfPost}"></p>
-<!--    <p th:text="${post.}"/>-->
-<!--    <p th:text="${post.getId()}"/>-->
+<!--    <p th:text="${post.postDetails.historyOfPost}"></p>-->
+
 </div>
 
 <footer th:replace="partials/footer :: footer"/>

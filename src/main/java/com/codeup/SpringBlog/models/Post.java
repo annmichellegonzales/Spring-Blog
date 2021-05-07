@@ -1,8 +1,8 @@
 package com.codeup.SpringBlog.models;
-import org.springframework.cglib.core.ProcessArrayCallback;
 
 import javax.persistence.*;
 import java.util.List;
+
 
 @Entity
 @Table(name = "posts")
@@ -25,13 +25,17 @@ public class Post {
     @OneToOne(cascade = CascadeType.ALL)
     private PostDetails postDetails;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post", orphanRemoval = true)
+    @OneToMany(
+            cascade = CascadeType.ALL, // allows us to CRUD images through posts
+            mappedBy = "post", // Prevents the unneeded mapping table
+            orphanRemoval = true // removes an image that has no owner
+    )
     private List<PostImages> images;
 
     public Post(){
     }
 
-    public Post(long id, String title, String body, User user, PostDetails postDetails, List<PostImage> images) {
+    public Post(long id, String title, String body, User user, PostDetails postDetails, List<PostImages> images) {
         this.id = id;
         this.title = title;
         this.body = body;

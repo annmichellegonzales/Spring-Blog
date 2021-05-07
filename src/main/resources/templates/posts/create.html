@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:action="@{/posts/create}" th:method="post" th:object="${post}">
+    Title:
+    <input th:field="*{title}" />
+    <br />
+    Description:
+    <input th:field="*{body}" />
+    <br />
+<!--    History of Post-->
+<!--    <input th:field="*{postDetails.hisoryOfPost}" />-->
+<!--    post.postDetails.historyOfPost-->
+    <input type="submit" />
+</form>
+
+</body>
+</html>
