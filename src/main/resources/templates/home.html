@@ -4,33 +4,49 @@
     <meta charset="UTF-8">
     <title>&dagger; Home &dagger;</title>
     <th:block th:replace="partials/styles :: styles" />
+    <style>
+    body {
+    background: linear-gradient(-45deg, #cdb4db, #ffafcc, #bde0fe, #a2d2ff);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    }
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    </style>
 </head>
+
 <body class="d-flex flex-column min-vh-100">
+<nav th:replace="partials/navbar :: navbar"></nav>
 
-<nav th:replace="partials/navbar :: navbar"/>
 
-<div class="container">
-    <div class="row">
-        <div class="col mt-5">
-            <header th:replace="partials/header :: header('&#9904; Welcome &#9904;')"></header>
-        </div>
-        <div class="col mt-5">
-            <img src="/img/unicorn.png" alt="pastel unicorn" style="width:500px;display: block;margin-left: auto;margin-right: auto;">
-        </div>
-    </div>
+<h1 class="text-light">Welcome! Feel free to join in on the blogging fun!</h1>
+
+<div class="btn-group mt-2 mb-4" role="group" aria-label="actionButtons">
+    <a href="https://codepen-api-export-production.s3.us-west-2.amazonaws.com/zip/PEN/pyBNzX/1578778289271/pure-css-gradient-background-animation.zip" class="d-block btn btn-outline-light"><i class="fas fa-sign-in-alt"></i></i> Log In</a>
+    <a href="https://manuelpinto.in" target="_blank" class="d-block btn btn-outline-light"><i class="fas fa-user-plus"></i> Sign up</a>
 </div>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
 
 
 
-<!--<header th:replace="partials/header :: header('&#9904; Home &#9904;')"></header>-->
 
+<!--            <header th:replace="partials/header :: header('&#9904; Welcome &#9904;')"></header>-->
 
-<!--<img src="/img/unicorn.png" alt="pastel unicorn" style="width:500px;height:600px;display: block;margin-left: auto;margin-right: auto;">-->
+            <img id="unicorn" src="/img/unicorn.png" alt="pastel unicorn" style="width:500px;display: block;margin-left: auto;margin-right: auto;">
+
 
 <footer th:replace="partials/footer :: footer"></footer>
-
 <th:block th:replace="partials/scripts :: scripts" />
 </body>
 </html>

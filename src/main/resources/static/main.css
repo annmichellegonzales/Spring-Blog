@@ -1,3 +1,48 @@
-body {
-    background-color: #c8b6ff;
-}
+/*body {*/
+/*    background-color: rgba(0, 0, 0, 0); !* For browsers that do not support gradients *!*/
+/*    height: 100px;*/
+/*    background-image: linear-gradient(90deg, #ffc8dd, #CDB4DB, #CDB4DB, #A2D2FF, #bde0fe);*/
+/*    margin: 0;*/
+/*    overflow: hidden;*/
+/*}*/
+
+
+/*#unicorn {*/
+/*    !*width: 300px;*!*/
+/*    display: block;*/
+/*    margin-right: auto;*/
+/*    width: 100%;*/
+/*}*/
+
+/* Flashing */
+/*.hover figure:hover img {*/
+/*    opacity: 1;*/
+/*    -webkit-animation: flash 1.5s;*/
+/*    animation: flash 1.5s;*/
+/*}*/
+/*@-webkit-keyframes flash {*/
+/*    0% {*/
+/*        opacity: .4;*/
+/*    }*/
+/*    100% {*/
+/*        opacity: 1;*/
+/*    }*/
+/*}*/
+/*@keyframes flash {*/
+/*    0% {*/
+/*        opacity: .4;*/
+/*    }*/
+/*    100% {*/
+/*        opacity: 1;*/
+/*    }*/
+/*}*/
+
+/*h1 {*/
+/*    font-family: 'New Rocker', cursive;*/
+/*    !*size: 20px;*!*/
+/*    !*display: block;*!*/
+/*    margin-top: 50px;*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+/*    width: 50%;*/
+/*}*/
