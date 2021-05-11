@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!-- ... -->
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users.
+
+    User ID: <span th:text="${#authentication.principal.id}"/>
+    Username: <span th:text="${#authentication.principal.username}"/>
+    Email: <span th:text="${#authentication.principal.email}"/>
+</div>
+
+<head>
+    <meta charset="UTF-8">
+    <title>&dagger; Create Post &dagger;</title>
+    <th:block th:replace="partials/styles :: styles" />
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<!--<nav th:replace="partials/navbar :: navbar" />-->
+<nav th:replace="partials/navbar :: navbar"></nav>
+<header th:replace="partials/header :: header('&#9904; Create Post &#9904;')"></header>
+
+
+<!-- use thymeleaf to dynamically create the html for each post -->
+<!--<main class="container">-->
+<!--    <section th:replace="partials/post-form :: post-form('Create Post', '/posts/create')"></section>-->
+<!--</main>-->
+
+<form th:action="@{/posts/create}" th:method="post" th:object="${post}">
+    Title:
+    <input th:field="*{title}" />
+    <br />
+    Description:
+    <input th:field="*{body}" />
+    <br />
+<!--    History of Post-->
+<!--    <input th:field="*{postDetails.historyOfPost}" />-->
+    <input type="submit" />
+</form>
+
+<footer th:replace="partials/footer :: footer"></footer>
+<th:block th:replace="partials/scripts :: scripts" />
+</body>
+</html>

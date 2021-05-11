@@ -3,10 +3,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
+<<<<<<< HEAD
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -14,17 +15,27 @@ public class User {
     @Column(nullable = false)
     private long postId;
 
+=======
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+>>>>>>> relationship-practice
     @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
     private String password;
 
+<<<<<<< HEAD
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
     private List <Post> postList;
+=======
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts;
+>>>>>>> relationship-practice
 
 
     public User(long id, String username, String email, String password) {
@@ -32,6 +43,13 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
     }
 
     public User() {

@@ -5,7 +5,6 @@
     <title>&dagger; Index &dagger;</title>
     <th:block th:replace="partials/styles :: styles" />
 </head>
-
 <body class="d-flex flex-column min-vh-100">
 
 <nav th:replace="partials/navbar :: navbar" />
@@ -13,10 +12,10 @@
 
 
 <main>
-
 <div class="card" style="font-family: 'Roboto', sans-serif; font-size: 18px; background-color: #BDE0FE" th:each="post : ${posts}">
     <h3 th:text="${post.title}"/>
     <p th:text="${post.body}"/>
+<!--    <p th:text="${post.user.email}"/>-->
 </div>
 
 </main>

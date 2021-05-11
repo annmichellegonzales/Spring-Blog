@@ -1,13 +1,10 @@
 package com.codeup.SpringBlog.controllers;
 
 import com.codeup.SpringBlog.models.Ad;
-import com.codeup.SpringBlog.repositories.AdRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.codeup.SpringBlog.repositories.AdRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,9 +12,9 @@ import java.util.List;
 public class AdController {
 
     // Contructor dependendency injection
-    private final AdRepo adsDao;
+    private final AdRepository adsDao;
 
-    public AdController(AdRepo adsDao) {
+    public AdController(AdRepository adsDao) {
         this.adsDao = adsDao;
     }
 
@@ -42,7 +39,7 @@ public class AdController {
         return "redirect:/ads"; //redirect to "/ads"
     }
 
-    @GetMapping("/ads/create")
+    @PostMapping("/ads/create")
     public String createAd() {
         Ad ad = new Ad(
                 "Unicorn",
@@ -63,5 +60,21 @@ public class AdController {
         adsDao.save(updatedAd);
         return "redirect:/ads";
     }
+
+    @GetMapping("/ads/create")
+    public String showCreateForm() {
+        return "ads/create";
+    }
+
+//    @PostMapping("/ads/create")
+//    public String create(
+//            @RequestParam(name = "title") String title,
+//            @RequestParam(name = "description") String description
+//    ) {
+//        Ad ad = new Ad();
+//        ad.setTitle(title);
+//        ad.setDescription(description);
+//        // save the ad...
+//    }
 
 }
