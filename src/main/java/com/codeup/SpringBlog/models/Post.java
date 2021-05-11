@@ -8,6 +8,7 @@ import java.util.List;
 @Table(name = "posts")
 public class Post {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "INT UNSIGNED")
@@ -19,7 +20,7 @@ public class Post {
     @Column(columnDefinition = "TEXT NOT NULL")
     private String body;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private User user;
 
     @OneToOne(cascade = CascadeType.ALL)

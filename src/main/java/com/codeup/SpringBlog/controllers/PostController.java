@@ -1,6 +1,7 @@
 package com.codeup.SpringBlog.controllers;
 
 import com.codeup.SpringBlog.models.Post;
+import com.codeup.SpringBlog.models.PostDetails;
 import com.codeup.SpringBlog.models.User;
 import com.codeup.SpringBlog.repositories.PostRepository;
 import com.codeup.SpringBlog.repositories.UserRepository;
@@ -25,43 +26,70 @@ public class PostController {
         this.emailService = emailService;
     }
 
-//  index of all posts
+
     @GetMapping("/posts")
     public String index(Model vModel) {
-        List<Post> posts = postDao.findAll();
-        vModel.addAttribute("posts", posts);
+        vModel.addAttribute("posts", postDao.findAll());
         return "posts/index";
     }
 
+
+//    @GetMapping("/posts/{id}")
+//    public String show(@PathVariable long id, Model vModel) {
+//        Post post = postDao.getOne(id);
+//        vModel.addAttribute("id", id);
+//        vModel.addAttribute("post", post);
+//        return "posts/show";
+//    }
+
+
     @GetMapping("/posts/{id}")
     public String show(@PathVariable long id, Model vModel) {
-        Post post = postDao.getOne(id);
-        vModel.addAttribute("id", id);
-        vModel.addAttribute("post", post);
+        vModel.addAttribute("post", postDao.getOne(id));
         return "posts/show";
     }
 
+
+//    @PostMapping("/posts/{id}/delete")
+//    public String deletePost(@PathVariable long id, Model model) {
+//        Post post = postDao.getOne(id);
+//        postDao.delete(post);
+//        return "redirect:/posts";
+//    }
+
     @PostMapping("/posts/{id}/delete")
-    public String deletePost(@PathVariable long id, Model model) {
-        Post post = postDao.getOne(id);
-        postDao.delete(post);
+    public String delete(@PathVariable long id) {
+        postDao.deleteById(id);
         return "redirect:/posts";
     }
+
+
 
     @GetMapping("/posts/create")
     public String showCreateForm(Model vModel) {
         vModel.addAttribute("post", new Post());
-        SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return "posts/create";
     }
 
+//    @PostMapping("/posts/create")
+//    public String create(@ModelAttribute Post post) {
+//        emailService.prepareAndSend(post, "Post Created!", "You have just created a post!");
+//        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User author = userDao.getOne(principal.getId());
+//        post.setUser(author);
+//        Post savedPost = postDao.save(post);
+//        return "redirect:/posts/" + savedPost.getId();
+//    }
+
     @PostMapping("/posts/create")
-    public String create(@ModelAttribute Post post) {
-        emailService.prepareAndSend(post, "Post Created!", "You have just created a post!");
+    public String insert(@ModelAttribute Post post, PostDetails postDetails) {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User author = userDao.getOne(principal.getId());
         post.setUser(author);
         Post savedPost = postDao.save(post);
+//        Post.postDetails.historyOfPost =;
+        emailService.prepareAndSend(post, "Post Created!", "You have just created a post!");
         return "redirect:/posts/" + savedPost.getId();
     }
 

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>&dagger; Home &dagger;</title>
+    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
     <th:block th:replace="partials/styles :: styles" />
     <style>
     body {
@@ -26,24 +27,18 @@
 
 <body class="d-flex flex-column min-vh-100">
 <nav th:replace="partials/navbar :: navbar"></nav>
-
-
-<h1 class="text-light">Welcome! Feel free to join in on the blogging fun!</h1>
+<!--<header th:replace="partials/header :: header('&#9904; Welcome &#9904;')"></header>-->
+<h1 class="text-light" style="text-align: center;">Welcome to BlogStar! Feel free to join in on the blogging fun!</h1>
 
 <div class="btn-group mt-2 mb-4" role="group" aria-label="actionButtons">
-    <a href="https://codepen-api-export-production.s3.us-west-2.amazonaws.com/zip/PEN/pyBNzX/1578778289271/pure-css-gradient-background-animation.zip" class="d-block btn btn-outline-light"><i class="fas fa-sign-in-alt"></i></i> Log In</a>
-    <a href="https://manuelpinto.in" target="_blank" class="d-block btn btn-outline-light"><i class="fas fa-user-plus"></i> Sign up</a>
+    <a href="/login" class="d-block btn btn-outline-light"><i class="fas fa-sign-in-alt"></i>Log In</a>
+    <a href="/sign-up" class="d-block btn btn-outline-light"><i class="fas fa-user-plus"></i>  Sign up</a>
 </div>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
 
-
-
-
-<!--            <header th:replace="partials/header :: header('&#9904; Welcome &#9904;')"></header>-->
-
-            <img id="unicorn" src="/img/unicorn.png" alt="pastel unicorn" style="width:500px;display: block;margin-left: auto;margin-right: auto;">
+<img id="unicorn" src="/img/unicorn.png" alt="pastel unicorn" style="width:500px;display: block;margin-left: auto;margin-right: auto;">
 
 
 <footer th:replace="partials/footer :: footer"></footer>

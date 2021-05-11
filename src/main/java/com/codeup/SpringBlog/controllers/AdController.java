@@ -1,8 +1,7 @@
 package com.codeup.SpringBlog.controllers;
 
 import com.codeup.SpringBlog.models.Ad;
-import com.codeup.SpringBlog.repositories.AdRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.codeup.SpringBlog.repositories.AdRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +12,9 @@ import java.util.List;
 public class AdController {
 
     // Contructor dependendency injection
-    private final AdRepo adsDao;
+    private final AdRepository adsDao;
 
-    public AdController(AdRepo adsDao) {
+    public AdController(AdRepository adsDao) {
         this.adsDao = adsDao;
     }
 
