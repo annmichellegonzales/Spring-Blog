@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <title>&dagger; Index &dagger;</title>
     <th:block th:replace="partials/styles :: styles" />
+    <style>
+        body {
+            background: linear-gradient(-45deg, #cdb4db, #ffafcc, #bde0fe, #a2d2ff);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
-
 <nav th:replace="partials/navbar :: navbar" />
 <header th:replace="partials/header :: header('&#9904 Posts &#9904')"></header>
 
