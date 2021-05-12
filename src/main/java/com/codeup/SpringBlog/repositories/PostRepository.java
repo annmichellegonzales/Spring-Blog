@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.codeup.SpringBlog.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PostRepository extends JpaRepository<User, Long> {
-    PostRepository findByTitle(String title);
+public interface PostRepository extends JpaRepository<Post, Long> {
+    Post findByTitle(String title);
 }
 

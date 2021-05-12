@@ -7,19 +7,9 @@ import java.util.List;
 public class User {
 
     @Id
-<<<<<<< HEAD
-    @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
-    private long postId;
-
-=======
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
->>>>>>> relationship-practice
     @Column(nullable = false, unique = true)
     private String username;
 
@@ -29,20 +19,10 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-<<<<<<< HEAD
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
-    private List <Post> postList;
-=======
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
->>>>>>> relationship-practice
 
-
-    public User(long id, String username, String email, String password) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
+    public User() {
     }
 
     public User(User copy) {
@@ -50,13 +30,6 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
-    }
-
-    public User() {
-
-    }
-
-    public User(int id, String email, String password, int postId, String username) {
     }
 
     public long getId() {
@@ -89,6 +62,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
 }

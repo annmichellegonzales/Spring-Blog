@@ -2,6 +2,7 @@ package com.codeup.SpringBlog;
 
 import com.codeup.SpringBlog.models.Post;
 import com.codeup.SpringBlog.models.User;
+import com.codeup.SpringBlog.repositories.PostRepository;
 import com.codeup.SpringBlog.repositories.UserRepository;
 import org.junit.Before;
 import org.junit.Test;

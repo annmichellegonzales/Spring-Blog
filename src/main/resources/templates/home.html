@@ -27,43 +27,16 @@
 
 <body class="d-flex flex-column min-vh-100">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<!--<header th:replace="partials/header :: header('&#9904; Welcome &#9904;')"></header>-->
+
 <h1 class="text-light" style="text-align: center;">Welcome to BlogStar! Feel free to join in on the blogging fun!</h1>
-
-<nav th:replace="partials/navbar :: navbar"/>
-
-<div class="container">
-    <div class="row">
-        <div class="col mt-5">
-            <header th:replace="partials/header :: header('&#9904; Welcome &#9904;')"></header>
-        </div>
-        <div class="col mt-5">
-            <img src="/img/unicorn.png" alt="pastel unicorn" style="width:500px;display: block;margin-left: auto;margin-right: auto;">
-        </div>
-    </div>
-</div>
-
-
-
-
-
-<!--<header th:replace="partials/header :: header('&#9904; Home &#9904;')"></header>-->
-
-
-<!--<img src="/img/unicorn.png" alt="pastel unicorn" style="width:500px;height:600px;display: block;margin-left: auto;margin-right: auto;">-->
 
 <div class="btn-group mt-2 mb-4" role="group" aria-label="actionButtons">
     <a href="/login" class="d-block btn btn-outline-light"><i class="fas fa-sign-in-alt"></i>Log In</a>
     <a href="/sign-up" class="d-block btn btn-outline-light"><i class="fas fa-user-plus"></i>  Sign up</a>
 </div>
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
-
 <img id="unicorn" src="/img/unicorn.png" alt="pastel unicorn" style="width:500px;display: block;margin-left: auto;margin-right: auto;">
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
 <footer th:replace="partials/footer :: footer"></footer>
 <th:block th:replace="partials/scripts :: scripts" />
 </body>

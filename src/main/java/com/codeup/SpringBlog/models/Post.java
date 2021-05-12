@@ -8,7 +8,6 @@ import java.util.List;
 @Table(name = "posts")
 public class Post {
 
-
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,9 +26,9 @@ public class Post {
     private PostDetails postDetails;
 
     @OneToMany(
-            cascade = CascadeType.ALL, // allows us to CRUD images through posts
-            mappedBy = "post", // Prevents the unneeded mapping table
-            orphanRemoval = true // removes an image that has no owner
+            cascade = CascadeType.ALL,
+            mappedBy = "post",
+            orphanRemoval = true
     )
     private List<PostImages> images;
 

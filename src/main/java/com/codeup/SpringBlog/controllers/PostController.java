@@ -33,14 +33,6 @@ public class PostController {
     }
 
 
-//    @GetMapping("/posts/{id}")
-//    public String show(@PathVariable long id, Model vModel) {
-//        Post post = postDao.getOne(id);
-//        vModel.addAttribute("id", id);
-//        vModel.addAttribute("post", post);
-//        return "posts/show";
-//    }
-
 
     @GetMapping("/posts/{id}")
     public String show(@PathVariable long id, Model vModel) {
@@ -49,17 +41,10 @@ public class PostController {
     }
 
 
-//    @PostMapping("/posts/{id}/delete")
-//    public String deletePost(@PathVariable long id, Model model) {
-//        Post post = postDao.getOne(id);
-//        postDao.delete(post);
-//        return "redirect:/posts";
-//    }
-
     @PostMapping("/posts/{id}/delete")
     public String delete(@PathVariable long id) {
         postDao.deleteById(id);
-        return "redirect:/posts";
+        return "redirect:posts";
     }
 
 
@@ -89,7 +74,7 @@ public class PostController {
         Post savedPost = postDao.save(post);
 //        Post.postDetails.historyOfPost =;
         emailService.prepareAndSend(post, "Post Created!", "You have just created a post!");
-        return "redirect:/posts/" + savedPost.getId();
+        return "redirect:posts/" + savedPost.getId();
     }
 
 
@@ -103,13 +88,13 @@ public class PostController {
     @PostMapping("/posts/{id}/edit")
     public String update(@ModelAttribute Post post) {
         postDao.save(post);
-        return "redirect:/posts";
+        return "redirect:posts";
     }
 
     @PostMapping("/post/{id}/delete")
     public String deletePost(@PathVariable("id") Long id) {
         postDao.deleteById(id);
-        return "redirect:/post";
+        return "redirect:post";
     }
 
 }
