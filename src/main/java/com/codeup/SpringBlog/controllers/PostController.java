@@ -1,7 +1,6 @@
 package com.codeup.SpringBlog.controllers;
 
 import com.codeup.SpringBlog.models.Post;
-import com.codeup.SpringBlog.models.PostDetails;
 import com.codeup.SpringBlog.models.User;
 import com.codeup.SpringBlog.repositories.PostRepository;
 import com.codeup.SpringBlog.repositories.UserRepository;
@@ -11,90 +10,64 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+
 @Controller
 public class PostController {
 
-    private final PostRepository postDao;
-    private final UserRepository userDao;
-    private final EmailService emailService;
+    private final PostRepository postsDao;
+    private final UserRepository usersDao;
+    private final EmailService emailSvc;
 
-
-    public PostController(PostRepository postDao, UserRepository userDao, EmailService emailService) {
-        this.postDao = postDao;
-        this.userDao = userDao;
-        this.emailService = emailService;
+    public PostController(PostRepository postsDao, UserRepository usersDao, EmailService emailService) {
+        this.postsDao = postsDao;
+        this.usersDao = usersDao;
+        this.emailSvc = emailService;
     }
-
 
     @GetMapping("/posts")
     public String index(Model vModel) {
-        vModel.addAttribute("posts", postDao.findAll());
+        vModel.addAttribute("posts", postsDao.findAll());
         return "posts/index";
     }
 
-
-
     @GetMapping("/posts/{id}")
     public String show(@PathVariable long id, Model vModel) {
-        vModel.addAttribute("post", postDao.getOne(id));
+        vModel.addAttribute("post", postsDao.getOne(id));
         return "posts/show";
     }
 
-
-    @PostMapping("/posts/{id}/delete")
-    public String delete(@PathVariable long id) {
-        postDao.deleteById(id);
-        return "redirect:posts";
-    }
-
-
-
-    @GetMapping("/posts/create")
-    public String showCreateForm(Model vModel) {
-        vModel.addAttribute("post", new Post());
-//        SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return "posts/create";
-    }
-
-//    @PostMapping("/posts/create")
-//    public String create(@ModelAttribute Post post) {
-//        emailService.prepareAndSend(post, "Post Created!", "You have just created a post!");
-//        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User author = userDao.getOne(principal.getId());
-//        post.setUser(author);
-//        Post savedPost = postDao.save(post);
-//        return "redirect:/posts/" + savedPost.getId();
-//    }
-
-    @PostMapping("/posts/create")
-    public String insert(@ModelAttribute Post post, PostDetails postDetails) {
-        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User author = userDao.getOne(principal.getId());
-        post.setUser(author);
-        Post savedPost = postDao.save(post);
-//        Post.postDetails.historyOfPost =;
-        emailService.prepareAndSend(post, "Post Created!", "You have just created a post!");
-        return "redirect:posts/" + savedPost.getId();
-    }
-
-
     @GetMapping("/posts/{id}/edit")
     public String edit(@PathVariable long id, Model vModel) {
-        Post postToEdit = postDao.getOne(id);
+        Post postToEdit = postsDao.getOne(id);
         vModel.addAttribute("post", postToEdit);
         return "posts/edit";
     }
 
     @PostMapping("/posts/{id}/edit")
     public String update(@ModelAttribute Post post) {
-        postDao.save(post);
-        return "redirect:posts";
+        postsDao.save(post);
+        return "redirect:/posts";
     }
 
-    @PostMapping("/post/{id}/delete")
-    public String deletePost(@PathVariable("id") Long id) {
-        postDao.deleteById(id);
-        return "redirect:post";
+    @PostMapping("/posts/{id}/delete")
+    public String delete(@PathVariable long id) {
+        postsDao.deleteById(id);
+        return "redirect:/posts";
     }
 
+    @GetMapping("/posts/create")
+    public String create(Model vModel) {
+        vModel.addAttribute("post", new Post());
+        return "posts/create";
+    }
+
+    @PostMapping("/posts/create")
+    public String insert(@ModelAttribute Post post) {
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User author = usersDao.getOne(principal.getId());
+        post.setUser(author);
+        Post savedPost = postsDao.save(post);
+        emailSvc.prepareAndSend(post, "Post Created!", "You have just created a post!");
+        return "redirect:/posts/" + savedPost.getId();
+    }
 }

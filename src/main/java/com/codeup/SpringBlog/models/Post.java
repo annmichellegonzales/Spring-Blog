@@ -1,8 +1,6 @@
 package com.codeup.SpringBlog.models;
 
 import javax.persistence.*;
-import java.util.List;
-
 
 @Entity
 @Table(name = "posts")
@@ -22,24 +20,15 @@ public class Post {
     @ManyToOne
     private User user;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private PostDetails postDetails;
 
     public Post(){
     }
 
-    public Post(long id, String title, String body, User user, PostDetails postDetails) {
+    public Post(long id, String title, String body, User user) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.user = user;
-        this.postDetails = postDetails;
-    }
-
-    public Post(String title, String body, PostDetails postDetails) {
-        this.title = title;
-        this.body = body;
-        this.postDetails = postDetails;
     }
 
     public Post(String title, String body) {
@@ -69,14 +58,6 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
-    }
-
-    public PostDetails getPostDetails() {
-        return postDetails;
-    }
-
-    public void setPostDetails(PostDetails postDetails) {
-        this.postDetails = postDetails;
     }
 
     public User getUser() {
