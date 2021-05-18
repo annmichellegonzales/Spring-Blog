@@ -25,23 +25,15 @@ public class Post {
     @OneToOne(cascade = CascadeType.ALL)
     private PostDetails postDetails;
 
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            mappedBy = "post",
-            orphanRemoval = true
-    )
-    private List<PostImages> images;
-
     public Post(){
     }
 
-    public Post(long id, String title, String body, User user, PostDetails postDetails, List<PostImages> images) {
+    public Post(long id, String title, String body, User user, PostDetails postDetails) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.user = user;
         this.postDetails = postDetails;
-        this.images = images;
     }
 
     public Post(String title, String body, PostDetails postDetails) {
@@ -95,11 +87,4 @@ public class Post {
         this.user = user;
     }
 
-    public List<PostImages> getImages() {
-        return images;
-    }
-
-    public void setImages(List<PostImages> images) {
-        this.images = images;
-    }
 }
