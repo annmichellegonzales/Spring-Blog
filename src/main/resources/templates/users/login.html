@@ -1,60 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>&dagger; Home &dagger;</title>
-    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
-    <th:block th:replace="partials/styles :: styles" />
-</head>
+<head th:replace="partials/head :: head"></head>
+
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-
-<!--<div class="background"></div>-->
-<!--<div class="background-texture"></div>-->
-<!--<nav th:replace="partials/navbar :: navbar"></nav>-->
-<header class="header">
-    <div th:if="${param.error}">
-        Invalid Username and Password.
-    </div>
-    <div th:if="${param.logout}">
-        You have been logged out.
-    </div>
-    <div class="left-content">
-        <p class="stay-home">Hi, there!</p>
-        <h1>Login</h1>
-        <p></p>
-        <p class="para">
-        <form th:action="@{/login}" method="post">
-            <label for="username">Username</label>
-            <input id="username" name="username" type="text"/>
-        <br>
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password"/>
-<!--            <button>-->
-                <input type="submit" value="Log In"/>
-<!--            </button>-->
-        </form>
-        </p>
-    </div>
-</header>
+<header th:replace="partials/header :: header('&#9904; Login &#9904;')"></header>
 
 
-<!--<h1>Log In</h1>-->
-<!--<div th:if="${param.error}">-->
-<!--  Invalid Username and Password.-->
-<!--</div>-->
-<!--<div th:if="${param.logout}">-->
-<!--  You have been logged out.-->
-<!--</div>-->
+<div th:if="${param.error}">
+  Invalid Username and Password.
+</div>
+<div th:if="${param.logout}">
+  You have been logged out.
+</div>
 
 
-<!--<form th:action="@{/login}" method="post">-->
-<!--  <label for="username">Username</label>-->
-<!--  <input id="username" name="username" type="text" />-->
-<!--  <label for="password">Password</label>-->
-<!--  <input id="password" name="password" type="password" />-->
-<!--  <input type="submit" value="Log In" />-->
-<!--</form>-->
+<form th:action="@{/login}" method="post">
+  <label for="username">Username</label>
+  <input id="username" name="username" type="text" />
+  <label for="password">Password</label>
+  <input id="password" name="password" type="password" />
+  <input type="submit" value="Log In" />
+</form>
 
 <!--<footer th:replace="partials/footer :: footer"></footer>-->
 <th:block th:replace="partials/scripts :: scripts" />
