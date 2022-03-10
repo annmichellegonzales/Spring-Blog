@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://wwww.thymeleaf.org" lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>&dagger; About &dagger;</title>
     <th:block th:replace="partials/styles :: styles" />
 </head>
+
 <body class="d-flex flex-column min-vh-100">
 
-<nav th:replace="partials/navbar :: navbar"></nav>
+    <nav th:replace="partials/navbar :: navbar"></nav>
 
-<header th:replace="partials/header :: header('&#9904; About &#9904;')"></header>
+    <header th:replace="partials/header :: header('&#9904; About &#9904;')"></header>
 
-<p>Thank you for visiting BlogStar! This project was created using Spring boot.</p>
+    <div class="container">
 
-<footer th:replace="partials/footer :: footer"></footer>
+        <p style="text-align: center;"></p>Thank you for visiting BlogStar! My name is Ann. This project was created
+        using Spring boot. Please visit the following link to view my portfolio: <a
+            href="https://annmichellegonzales.github.io/portfolio/">Portfolio</a></p>
 
-<th:block th:replace="partials/scripts :: scripts" />
+    </div>
+
+
+    <footer th:replace="partials/footer :: footer"></footer>
+    <th:block th:replace="partials/scripts :: scripts" />
 
 </body>
+
 </html>

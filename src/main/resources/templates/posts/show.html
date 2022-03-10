@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>&dagger; Post &dagger;</title>
-    <th:block th:replace="partials/styles :: styles" />
 
-</head>
-
+<head th:replace="partials/head :: head"></head>
 
 <body class="d-flex flex-column min-vh-100">
-
-<nav th:replace="partials/navbar :: navbar" />
-<header th:replace="partials/header :: header('&#9904 Post &#9904')"></header>
-
-<div style="font-family: 'Roboto'">
-    <h3 th:text="${post.title}"/>
-    <p th:text="${post.body}"/>
-
-<!--    <p th:text="${post.getId().}"/>-->
-
-<!--    <p th:text="${post.postDetails.historyOfPost}"></p>-->
-
-<!--    <a class="nav-link" href="/posts/{id}/edit">Edit Post</a>-->
+    <nav th:replace="partials/navbar :: navbar"></nav>
+    <header th:replace="partials/header :: header('&#9904; Posts &#9904;')"></header>
 
 
-</div>
 
-<footer th:replace="partials/footer :: footer"/>
-<th:block th:replace="partials/scripts :: scripts" />
-</body>
+    <body class="d-flex flex-column min-vh-100">
+
+        <nav th:replace="partials/navbar :: navbar" />
+
+        <div class="container">
+
+            <header th:replace="partials/header :: header('&#9904 Post &#9904')"></header>
+
+            <div style="font-family: 'Roboto'">
+                <h3 th:text="${post.title}" />>
+                <p th:text="${post.body}" />
+                <button>Edit</button>
+
+                <p th:text="${post.getId()}" />
+
+                <!-- <p th:text="${post.postDetails.historyOfPost}"></p> -->
+
+                <p><a th:text="${post.getId()}" href="/posts/{id}/edit">Edit Post</a></p>
+
+                
+
+            </div>
+        </div>
+
+        <footer th:replace="partials/footer :: footer" />
+        <th:block th:replace="partials/scripts :: scripts" />
+    </body>
+
 </html>

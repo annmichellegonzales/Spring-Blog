@@ -1,32 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>&dagger; Home &dagger;</title>
-    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
-    <th:block th:replace="partials/styles :: styles" />
-    <style>
-        body {
-            background: linear-gradient(-45deg, #cdb4db, #ffafcc, #bde0fe, #a2d2ff);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-        }
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-    </style>
-</head>
-<body>
+<head th:replace="partials/head :: head"></head>
+<body class="d-flex flex-column min-vh-100">
 <nav th:replace="partials/navbar :: navbar"></nav>
+<header th:replace="partials/header :: header('&#9904; Sign up &#9904;')"></header>
 
+
+
+<div style="text-align: center;">
 <header class="header">
     <div th:if="${param.error}">
         Invalid Username and Password.
@@ -36,9 +17,7 @@
     </div>
     <div class="left-content">
 <!--        <nav th:replace="partials/navbar :: navbar"></nav>-->
-        <p class="stay-home">Please create an account.</p>
-        <h1>Sign up</h1>
-        <p></p>
+
         <p class="para">
         <form th:action="@{/sign-up}" method="POST" th:object="${user}">
             <label for="username">Username</label>
@@ -52,27 +31,15 @@
 
             <input value="Sign me up!" type="submit" />
         </form>
-        </p>
+
+        <p>Already registered? <a href="/login">Log in</a></p>
+        
     </div>
 </header>
+</div>
 
 
 <footer th:replace="partials/footer :: footer"></footer>
 <th:block th:replace="partials/scripts :: scripts" />
-
-
-<!--<h1>Welcome, Adventurer! Your journey begins here. Please create an account.</h1>-->
-<!--<form th:action="@{/sign-up}" method="POST" th:object="${user}">-->
-<!--    <label for="username">Username</label>-->
-<!--    <input id="username" th:field="*{username}" />-->
-
-<!--    <label for="email">Email</label>-->
-<!--    <input id="email" th:field="*{email}" />-->
-
-<!--    <label for="password">Password</label>-->
-<!--    <input id="password" type="password" th:field="*{password}" />-->
-
-<!--    <input value="Sign me up!" type="submit" />-->
-<!--</form>-->
 </body>
 </html>
