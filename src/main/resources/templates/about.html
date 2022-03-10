@@ -8,13 +8,14 @@
 <body class="d-flex flex-column min-vh-100">
 
 <nav th:replace="partials/navbar :: navbar"></nav>
-<header th:replace="partials/header :: header('&#9904; About &#9904;')"></header>
-<footer th:replace="partials/footer :: footer"></footer>
 
-<th:block th:replace="partials/scripts :: scripts" />
+<header th:replace="partials/header :: header('&#9904; About &#9904;')"></header>
 
 <p>Thank you for visiting BlogStar! This project was created using Spring boot.</p>
 
+<footer th:replace="partials/footer :: footer"></footer>
+
+<th:block th:replace="partials/scripts :: scripts" />
 
 </body>
 </html>
