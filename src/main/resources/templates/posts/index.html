@@ -1,38 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://wwww.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>&dagger; Index &dagger;</title>
+    <title>&dagger; Posts &dagger;</title>
+    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
     <th:block th:replace="partials/styles :: styles" />
-    <style>
-        body {
-            background: linear-gradient(-45deg, #cdb4db, #ffafcc, #bde0fe, #a2d2ff);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-        }
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-    </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
-<nav th:replace="partials/navbar :: navbar" />
+<nav th:replace="partials/navbar :: navbar"></nav>
 <header th:replace="partials/header :: header('&#9904 Posts &#9904')"></header>
 
 
 <main>
-<div class="card" style="font-family: 'Roboto', sans-serif; font-size: 18px; background-color: #BDE0FE" th:each="post : ${posts}">
+<div class="card" style="font-family: 'Roboto', sans-serif; font-size: 18px; background-color: #BDE0FE; padding: 25px; margin: 30px;" th:each="post : ${posts}">
     <h3 th:text="${post.title}"/>
     <p th:text="${post.body}"/>
-<!--    <p th:text="${post.user.email}"/>-->
+    <p th:text="${post.user.email}"/>
+    <a th:text="${post.id}" href= "/posts/{id}">View</a>
+    <!-- <p><a th:text="${post.getId()}" href="/posts/{id}/">View</a></p> -->
 </div>
 
 </main>

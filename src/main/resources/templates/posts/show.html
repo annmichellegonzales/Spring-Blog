@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-
-<head th:replace="partials/head :: head"></head>
-
+<html xmlns:th="http://wwww.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>&dagger; View Post &dagger;</title>
+    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
+    <th:block th:replace="partials/styles :: styles" />
+</head>
 <body class="d-flex flex-column min-vh-100">
     <nav th:replace="partials/navbar :: navbar"></nav>
-    <header th:replace="partials/header :: header('&#9904; Posts &#9904;')"></header>
-
-
-
-    <body class="d-flex flex-column min-vh-100">
-
-        <nav th:replace="partials/navbar :: navbar" />
+    <header th:replace="partials/header :: header('&#9904; Post &#9904;')"></header>
 
         <div class="container">
 
-            <header th:replace="partials/header :: header('&#9904 Post &#9904')"></header>
-
-            <div style="font-family: 'Roboto'">
-                <h3 th:text="${post.title}" />>
+            <!-- <div style="font-family: 'Roboto'">
+                 -->
+                <h3 th:text="${post.title}" />
                 <p th:text="${post.body}" />
                 <button>Edit</button>
 
@@ -26,11 +22,11 @@
 
                 <!-- <p th:text="${post.postDetails.historyOfPost}"></p> -->
 
-                <p><a th:text="${post.getId()}" href="/posts/{id}/edit">Edit Post</a></p>
+                <!-- <p><a th:text="${post.getId()}" href="/posts/{id}/edit">Edit Post</a></p> -->
 
                 
 
-            </div>
+            <!-- </div> -->
         </div>
 
         <footer th:replace="partials/footer :: footer" />

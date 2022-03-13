@@ -16,8 +16,6 @@
     <th:block th:replace="partials/styles :: styles" />
 </head>
 <body class="d-flex flex-column min-vh-100">
-
-<!--<nav th:replace="partials/navbar :: navbar" />-->
 <nav th:replace="partials/navbar :: navbar"></nav>
 <header th:replace="partials/header :: header('&#9904; Create Post &#9904;')"></header>
 
@@ -25,7 +23,7 @@
 <!-- use thymeleaf to dynamically create the html for each post -->
 <!--<main class="container">-->
 <!--    <section th:replace="partials/post-form :: post-form('Create Post', '/posts/create')"></section>-->
-<!--</main>-->
+</main>
 
 <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
     Title:
@@ -38,6 +36,7 @@
 <!--    <input th:field="*{postDetails.historyOfPost}" />-->
     <input type="submit" />
 </form>
+</main>
 
 <footer th:replace="partials/footer :: footer"></footer>
 <th:block th:replace="partials/scripts :: scripts" />
